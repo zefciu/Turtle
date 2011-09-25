@@ -24,3 +24,22 @@ penChange up turtle = Turtle
 
 penUp = penChange True
 penDown = penChange False
+
+canvasDrawLine :: Point -> Point -> Canvas -> Canvas
+canvasDrawLine f t can = Canvas
+    (canvasWidth can)
+    (canvasHeight can)
+    ((Line f t):(canvasLines can))
+
+
+moveTurtle :: Point -> Turtle -> Turtle
+moveTurtle point turtle = Turtle
+    point
+    (turtleDirection turtle)
+    (turtleHasPenUp turtle)
+    (if (turtleHasPenUp turtle)
+        then canvas
+        else (canvasDrawLine (turtlePosition turtle) point canvas))
+    where canvas = turtleCanvas turtle
+        
+
