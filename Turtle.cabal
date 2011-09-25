@@ -51,11 +51,12 @@ Library
   Exposed-modules:     
     Turtle.Objects
     Turtle.Commands
+    Turtle.Arcs
   hs-source-dirs: src
   
   -- Packages needed in order to build this package.
   Build-depends:       
-    base
+    base>4.0
   
   -- Modules not exported by this package.
   -- Other-modules:       
