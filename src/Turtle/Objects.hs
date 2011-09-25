@@ -19,5 +19,6 @@ data Canvas = Canvas {
 data Turtle = Turtle {
     turtlePosition :: Point,
     turtleDirection :: Double,
+    turtleHasPenUp :: Bool,
     turtleCanvas :: Canvas
 }
