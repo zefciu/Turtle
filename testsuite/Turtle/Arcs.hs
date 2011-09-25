@@ -11,5 +11,7 @@ prop_inrange f a b = a' >= 0 && a' <= 360
 --instance Arbitrary Float where
 --    arbitrary n = choose (0, 360) :: Gen Float
 
-main = quickCheck $prop_inrange (<+)
+main = do
+    quickCheck $prop_inrange (addArc)
+    quickCheck $prop_inrange (subArc)
 

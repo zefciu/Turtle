@@ -5,8 +5,8 @@ normalize x | x > 360     = normalize $x - 360
             | x < 0       = normalize $x + 360
             | True        = x
 
-(+>) :: (Ord a, Num a) => a -> a -> a
-start +> x = normalize (start + x)
+addArc :: (Ord a, Num a) => a -> a -> a
+start `addArc` x = normalize (start + x)
 
-(<+) :: (Ord a, Num a) => a -> a -> a
-start <+ x = normalize (start - x)
+subArc :: (Ord a, Num a) => a -> a -> a
+start `subArc` x = normalize (start - x)
