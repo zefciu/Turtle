@@ -3,6 +3,9 @@ module Turtle.Commands where
 import Turtle.Objects
 import Turtle.Arcs
 
+deg2rad :: Double -> Double
+deg2rad deg = (deg / 180) * pi
+
 turnTurtle :: Bool -> Double -> Turtle -> Turtle
 turnTurtle rt arc turtle =
     Turtle
@@ -32,8 +35,8 @@ canvasDrawLine f t can = Canvas
     ((Line f t):(canvasLines can))
 
 
-moveTurtle :: Point -> Turtle -> Turtle
-moveTurtle point turtle = Turtle
+changeTurtlePos :: Point -> Turtle -> Turtle
+changeTurtlePos point turtle = Turtle
     point
     (turtleDirection turtle)
     (turtleHasPenUp turtle)
@@ -41,5 +44,17 @@ moveTurtle point turtle = Turtle
         then canvas
         else (canvasDrawLine (turtlePosition turtle) point canvas))
     where canvas = turtleCanvas turtle
-        
 
+calculateNewPosition :: Point -> Double -> Bool -> Double -> Point
+calculateNewPosition oldPosition direction forward length = Point
+    ((xDimension oldPosition) + (sin (deg2rad direction) * length * sign))
+    ((yDimension oldPosition) + (cos (deg2rad direction) * length * sign))
+    where sign = if forward then 1 else -1
+    
+        
+moveTurtle :: Bool -> Double -> Turtle -> Turtle
+moveTurtle forward length turtle = changeTurtlePos
+    (calculateNewPosition
+        (turtlePosition turtle) (turtleDirection turtle) forward length) turtle
+
+    

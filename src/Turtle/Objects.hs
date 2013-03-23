@@ -21,4 +21,4 @@ data Turtle = Turtle {
     turtleDirection :: Double,
     turtleHasPenUp :: Bool,
     turtleCanvas :: Canvas
-}
+} deriving (Show)

@@ -1,5 +1,3 @@
-import Char
-import List
 import Test.QuickCheck
 import Text.Printf
 import Turtle.Arcs
