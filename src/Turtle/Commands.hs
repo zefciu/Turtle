@@ -50,6 +50,9 @@ calculateNewPosition oldPosition direction forward length = Point
     ((xDimension oldPosition) + (sin (deg2rad direction) * length * sign))
     ((yDimension oldPosition) + (cos (deg2rad direction) * length * sign))
     where sign = if forward then 1 else -1
+
+type Command = Turtle -> Turtle
+type Commands = [Command]
     
         
 moveTurtle :: Bool -> Double -> Turtle -> Turtle
