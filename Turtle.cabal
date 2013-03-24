@@ -52,11 +52,13 @@ Library
     Turtle.Objects
     Turtle.Commands
     Turtle.Arcs
+    Turtle.GlossInterface
   hs-source-dirs: src
   
   -- Packages needed in order to build this package.
   Build-depends:       
-    base>4.0
+    base>4.0,
+    gloss>=1.7.7
   
   -- Modules not exported by this package.
   -- Other-modules:       

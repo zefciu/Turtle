@@ -57,4 +57,10 @@ moveTurtle forward length turtle = changeTurtlePos
     (calculateNewPosition
         (turtlePosition turtle) (turtleDirection turtle) forward length) turtle
 
+forward = moveTurtle True
+back = moveTurtle False
     
+execute :: Turtle -> [Turtle -> Turtle] -> Turtle
+execute turtle [] = turtle
+execute turtle (command:commands) = execute (command turtle) commands
+
